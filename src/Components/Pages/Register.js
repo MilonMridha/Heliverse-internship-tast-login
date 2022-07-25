@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
 const Register = () => {
     const navigate = useNavigate()
     const location = useLocation();
@@ -37,12 +37,12 @@ const Register = () => {
 
                 if (data.acknowledged) {
                     console.log(data)
-                    // toast.success('Please Login with your email and pass')
+                    toast.success('Please Login with your email and pass')
                     navigate(from, { replace: true });
                     e.target.reset()
                 }
                 else {
-                    // toast.error(data.message)
+                    toast.error(data.message)
                     e.target.reset()
                     return
                 }
@@ -77,7 +77,7 @@ const Register = () => {
                         <label for="confirmPassword" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm Password</label>
                     </div>
                     <p className='text-red-500'>{error}</p>
-                    <p className='my-5'>Have An Account?? <Link to='/' className='text-purple-800'> Please Login</Link> </p>
+                    <p className='my-5'><small>Have An Account??</small> <Link to='/' className='text-purple-800'> <small>Please Login</small></Link> </p>
                     <input type="submit" value="Register" className="text-black uppercase bg-white-500 shadow-lg focus:ring-4 focus:outline-none  font-medium text-sm w-full sm:w-auto px-5 py-2.5 px-20 text-center " />
                 </form>
             </div>
