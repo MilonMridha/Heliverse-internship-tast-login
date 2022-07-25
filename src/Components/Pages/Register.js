@@ -24,7 +24,7 @@ const Register = () => {
             return
         }
         
-        fetch(`https://thawing-gorge-51396.herokuapp.com/auth/register`, {
+        fetch(`http://localhost:5000/register`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

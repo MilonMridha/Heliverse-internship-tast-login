@@ -13,7 +13,7 @@ const Login = () => {
         const password = e.target.password.value;
         const user = { email, password };
         console.log(user)
-        fetch(`https://thawing-gorge-51396.herokuapp.com/auth/login`, {
+        fetch('http://localhost:5000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,7 +30,7 @@ const Login = () => {
                     localStorage.setItem('accessToken', accessToken);
 
                     toast.success('Logged In Successful')
-                    navigate('/user');
+                    navigate('/success');
                 }
                 else {
                     console.log(data)
