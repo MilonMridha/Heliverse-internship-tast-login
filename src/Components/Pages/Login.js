@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import email from '../../img/download.png'
@@ -9,8 +9,8 @@ import { faLock, faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 const Login = () => {
     const navigate = useNavigate()
-    const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+
+
 
 
     const loginUser = e => {
@@ -53,31 +53,35 @@ const Login = () => {
                 <div className='mt-10'>
 
                     <form onSubmit={loginUser}>
-                    <div className="relative z-0 mb-6 w-full group">
-                    <div className='flex justify-start'>
-                    <FontAwesomeIcon className="absolute top-0 ml-0 left-0 mt-3.5" icon={faEnvelope} ></FontAwesomeIcon>
-                    </div>
-                    <input  type="email" name="floating_email" className="block  px-5 w-full text-sm text-gray-900 pl-5 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
-                    
-                    
-                </div>
-                <div className="relative z-0 mb-6 w-full group">
-                <div className='flex justify-start'>
-                <FontAwesomeIcon className="absolute top-10 left-10 mt-3.5" icon={faLock} ></FontAwesomeIcon>
+                        <div className="relative z-0 mb-6 group">
+                            <div className='flex justify-start'>
+                                <FontAwesomeIcon className="absolute top-0 ml-0 left-0 mt-0" icon={faEnvelope} ></FontAwesomeIcon>
+                            </div>
+                            <input type="email" name="email" className="block  px-5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required autoComplete='off' />
 
-                </div>
-                    <input  type="password" name="floating_password" id="floating_password" className="block pl-5  px-5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
-                   
-                            
-                    
-                    
-                    
-                </div>
+
+                        </div>
+                        <div className="relative z-0 mb-6  group">
+                            <div className='flex justify-start'>
+                                <FontAwesomeIcon className="absolute top-0 left-0 mt-0" icon={faLock} ></FontAwesomeIcon>
+
+                            </div>
+                            <div className='flex justify-center px-0'>
+
+                            </div>
+                            <input type='password' name="password" id="floating_password" className="block   px-5 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required="" />
+
+
+
+
+
+
+                        </div>
                         <div className='flex items-between justify-between'>
                             <div>
                                 <div className="flex items-start mb-6">
                                     <div className=" h-5">
-                                        
+
                                         <input
                                             id="remember"
                                             type="checkbox"

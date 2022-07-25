@@ -1,11 +1,37 @@
 import React from 'react';
-
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 const ResetPassword = () => {
+    const navigate = useNavigate()
+    const resetPassword = (event) => {
+        event.preventDefault()
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        const newPassword = {password};
+    console.log(newPassword)
+    fetch(`http://localhost:5000/user/${email}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'},
+            body: JSON.stringify(newPassword),
+
+        })
+            .then(res =>res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    console.log(data)
+                    toast.success("Reset successful");
+                    navigate('/login')
+                    event.target.reset()
+                    
+                }
+            })
+    }
     return (
         <section className='w-1/3 mx-auto mt-40'>
         <div>
             <h2 className='text-2xl font-semibold mb-5'>Reset Now</h2>
-            <form>
+            <form onSubmit={resetPassword} >
                 <div className="relative z-0 w-full mb-6 group">
 
                     <input type="email" name="email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " required autoComplete='off' />
